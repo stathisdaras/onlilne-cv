@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <rect width="128" height="128" rx="24" fill="#f8f7f1" />
+  <text
+    x="50%"
+    y="50%"
+    text-anchor="middle"
+    dominant-baseline="central"
+    font-family="Poppins, Inter, system-ui, sans-serif"
+    font-size="60"
+    font-weight="700"
+    fill="#1f2937"
+  >
+    SD
+  </text>
+</svg>
+
