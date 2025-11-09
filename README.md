@@ -34,7 +34,7 @@ npm run lint       # run ESLint checks
 3. Commit the latest changes and push the `main` branch.
 4. Deploy one of the following ways:
    - **GitHub Pages → Deploy from branch:** In the repo settings, set *Pages* → *Branch* to `gh-pages` and push the contents of `dist/` (e.g. `git subtree push --prefix dist origin gh-pages`).
-   - **GitHub Actions workflow:** Use the official [`actions/deploy-pages`](https://github.com/actions/deploy-pages) template for Vite to build and publish automatically on every push to `main`.
+   - **GitHub Actions workflow (preconfigured):** The repo includes `.github/workflows/deploy.yml`, which builds and publishes via [`actions/deploy-pages`](https://github.com/actions/deploy-pages) whenever you push to `main`. Enable *Pages → Source: GitHub Actions* in the repo settings to activate it.
 
 ## Notes
 
