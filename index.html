@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Efstathios Daras · Interactive Resume</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              midnight: '#020617',
+              night: '#0f172a',
+              lagoon: '#38bdf8',
+              lavender: '#c084fc',
+              flame: '#fb7185',
+              ember: '#f97316',
+            },
+            fontFamily: {
+              display: ['Poppins', 'Inter', 'sans-serif'],
+              body: ['Inter', 'system-ui', 'sans-serif'],
+            },
+            boxShadow: {
+              glow: '0 0 35px rgba(56, 189, 248, 0.35)',
+              neon: '0 25px 65px rgba(12, 74, 110, 0.35)',
+            },
+            backgroundImage: {
+              'grid-radial':
+                'radial-gradient(circle at center, rgba(56, 189, 248, 0.18), transparent 60%)',
+            },
+          },
+        },
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

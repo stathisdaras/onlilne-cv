@@ -1,0 +1,42 @@
+.interests-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.interest-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(226, 232, 240, 0.4);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  color: #1f2937;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.interest-tag:hover {
+  background: rgba(191, 219, 254, 0.5);
+  border-color: rgba(59, 130, 246, 0.45);
+  color: #0f172a;
+}
+
+.interest-tag__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: inherit;
+  font-size: 1.2rem;
+}
+
+.interest-tag__label {
+  line-height: 1;
+}
+

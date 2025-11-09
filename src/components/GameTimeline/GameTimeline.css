@@ -1,0 +1,243 @@
+.timeline-board {
+  position: relative;
+  --timeline-offset: clamp(2.2rem, 9vw, 4rem);
+}
+
+@media (max-width: 767px) {
+  .timeline-board {
+    --timeline-offset: clamp(1.4rem, 12vw, 2.8rem);
+  }
+}
+
+.timeline-axis {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--timeline-offset);
+  transform: translateX(-50%);
+  width: 2px;
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0.35) 0%, rgba(203, 213, 225, 0.1) 80%, transparent 100%);
+  border-radius: 999px;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .timeline-axis {
+    opacity: 0.45;
+    width: 1.5px;
+  }
+}
+
+.timeline-character {
+  position: sticky;
+  top: 120px;
+  margin-left: var(--timeline-offset);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.75rem;
+  transform: translate(-50%, var(--char-offset, 0px));
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 2;
+}
+
+.timeline-character__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  border: 3px solid #f8fafc;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 18px 36px rgba(148, 163, 184, 0.25);
+  overflow: hidden;
+}
+
+.timeline-character__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.timeline-character__trail {
+  width: 2px;
+  flex: 1 1 auto;
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0.4), transparent 85%);
+  border-radius: 999px;
+}
+
+@media (max-width: 767px) {
+  .timeline-character {
+    top: 96px;
+    gap: 0.5rem;
+    opacity: 0.75;
+  }
+
+  .timeline-character__avatar {
+    width: 52px;
+    height: 52px;
+    border-width: 2px;
+    box-shadow: 0 12px 24px rgba(148, 163, 184, 0.22);
+  }
+
+  .timeline-character__trail {
+    width: 1px;
+    opacity: 0.55;
+  }
+}
+
+.timeline-character__trail {
+  width: 2px;
+  flex: 1 1 auto;
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0.4), transparent 85%);
+  border-radius: 999px;
+}
+
+@media (max-width: 767px) {
+  .timeline-character__trail {
+    width: 1px;
+    opacity: 0.55;
+  }
+}
+
+.timeline-track {
+  position: relative;
+  display: grid;
+  gap: 3.5rem;
+  padding-left: calc(var(--timeline-offset) + 1.8rem);
+}
+
+@media (min-width: 768px) {
+  .timeline-track {
+    padding-left: clamp(6rem, 18vw, 8.5rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .timeline-track {
+    gap: 2.5rem;
+    padding-left: calc(var(--timeline-offset) + 1.2rem);
+  }
+}
+
+.timeline-stage {
+  position: relative;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(203, 213, 225, 0.6);
+  box-shadow: 0 18px 36px rgba(148, 163, 184, 0.2);
+  padding: 1.75rem;
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    transform 0.5s ease,
+    opacity 0.5s ease;
+  transition-delay: calc(var(--timeline-stage-index, 0) * 0.12s);
+}
+
+.timeline-stage--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-stage--active {
+  border-color: rgba(148, 163, 184, 0.9);
+  box-shadow: 0 26px 52px rgba(148, 163, 184, 0.28);
+  transform: translateY(-10px);
+}
+
+.timeline-stage--visible.timeline-stage--active {
+  transform: translateY(-10px);
+}
+
+.timeline-stage__grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .timeline-stage__grid {
+    grid-template-columns: 36px 1fr;
+    align-items: start;
+  }
+}
+
+@media (min-width: 1024px) {
+  .timeline-stage__grid {
+    grid-template-columns: 36px 120px minmax(0, 1fr);
+  }
+}
+
+.timeline-stage__marker {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.timeline-stage__dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: rgba(203, 213, 225, 0.45);
+  border: 3px solid #f8fafc;
+  box-shadow: 0 0 0 3px rgba(148, 163, 184, 0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+}
+
+.timeline-stage--active .timeline-stage__dot {
+  background: #64748b;
+  box-shadow: 0 0 0 6px rgba(148, 163, 184, 0.35), 0 0 34px rgba(148, 163, 184, 0.35);
+  transform: scale(1.12);
+}
+
+.timeline-stage__line {
+  position: absolute;
+  top: 18px;
+  width: 2px;
+  height: calc(100% + 3rem);
+  background: linear-gradient(180deg, rgba(203, 213, 225, 0.4), rgba(148, 163, 184, 0));
+}
+
+.timeline-stage__checkpoint {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+@media (max-width: 1023px) {
+  .timeline-stage__checkpoint {
+    justify-content: flex-start;
+  }
+}
+
+.timeline-stage__body {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.timeline-stage__description {
+  margin: 0;
+}
+
+.timeline-stage__progress span {
+  font-weight: 600;
+  color: #475569;
+}
+
+@media (max-width: 767px) {
+  .timeline-stage {
+    padding: 1.5rem;
+  }
+
+  .timeline-stage__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-stage__checkpoint {
+    justify-content: flex-start;
+  }
+}
