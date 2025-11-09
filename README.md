@@ -25,7 +25,7 @@ npm run lint       # run ESLint checks
 - `src/assets/` – JSON data, profile image, and downloadable résumé PDF
 - `src/components/` – modular UI sections (skills cloud, timeline, certifications, interests)
 - `public/` – static assets served as-is (favicons, etc.)
-- `vite.config.ts` – Vite setup (add a `base` when deploying under a subpath)
+- `vite.config.ts` – Vite setup (base is `/` because the site uses the custom domain `stathisdaras.com`)
 
 ## Deploying to GitHub Pages
 
