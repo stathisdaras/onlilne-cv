@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react'
 import './LoadingOverlay.css'
 
-type LoadingOverlayProps = {
-  onComplete?: () => void
-}
-
-export function LoadingOverlay({ onComplete }: LoadingOverlayProps) {
+export function LoadingOverlay() {
   const [showSpinner, setShowSpinner] = useState(false)
 
   useEffect(() => {
