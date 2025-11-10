@@ -22,7 +22,7 @@
   "phone": "+41 78 962 04 44",
   "title": "Full Stack Engineer",
   "profileImage": "",
-  "briefProfile": "I am Stathis! I am currently a Full Stack Engineer at UBS based in Zurich/Switzerland. I built this website in order to learn React/Tailwind CSS and to practice tips and tricks from the Vibe Coding book by Steve Yegge & Gene Kim. So far I am loving it!",
+  "briefProfile": "I am Stathis! I am a Full Stack Engineer at UBS based in Zurich/Switzerland. I built this website in order to learn React/Tailwind CSS and to practice tips and tricks from the Vibe Coding book by Steve Yegge & Gene Kim. So far I am loving it!",
   "skills": [
     {
       "category": "Backend",
@@ -124,7 +124,7 @@
       "position": "Senior Software Engineer", 
       "startDate": "Apr 2021",
       "endDate": "Oct 2024",
-      "description": "As a member of the Commissions & Technical Accounting team at iptiQ, I am responsible for implementing features related to the customers' payment plan, dunning reminders, bookkeeping and commissioning.",
+      "description": "As a member of the Commissions & Technical Accounting team at iptiQ, I have been responsible for implementing features related to the customers' payment plan, dunning reminders, bookkeeping and commissioning.",
       "mainContributions": [
       ],
       "techStack": [

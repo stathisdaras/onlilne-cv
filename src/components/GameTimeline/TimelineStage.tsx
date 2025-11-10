@@ -1,4 +1,3 @@
-import { forwardRef, type CSSProperties } from 'react'
 import type { Stage } from './GameTimeline'
 import { StageIcon } from './StageIcon'
 
@@ -6,21 +5,13 @@ type TimelineStageProps = {
   stage: Stage
   stageIndex: number
   total: number
-  isActive: boolean
-  style?: CSSProperties
 }
 
-export const TimelineStage = forwardRef<HTMLDivElement, TimelineStageProps>(function TimelineStage(
-  { stage, stageIndex, total, isActive, style },
-  ref,
-) {
+export function TimelineStage({ stage, stageIndex, total }: TimelineStageProps) {
   return (
     <article
-      ref={ref}
       data-stage-index={stageIndex}
-      data-active={isActive}
-      className={`timeline-stage ${isActive ? 'timeline-stage--active' : ''}`}
-      style={style}
+      className="timeline-stage"
     >
       <div className="timeline-stage__grid">
         <div className="timeline-stage__marker" aria-hidden>
@@ -97,6 +88,6 @@ export const TimelineStage = forwardRef<HTMLDivElement, TimelineStageProps>(func
       </div>
     </article>
   )
-})
+}
 
 

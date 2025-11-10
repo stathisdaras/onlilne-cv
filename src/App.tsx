@@ -6,6 +6,8 @@ import { CertificationsCarousel } from './components/CertificationsCarousel/Cert
 import { GameTimeline } from './components/GameTimeline/GameTimeline'
 import { INTEREST_ORDER, InterestsGrid } from './components/InterestsGrid/InterestsGrid'
 import { SkillBadgeCloud } from './components/SkillBadgeCloud/SkillBadgeCloud'
+import { LoadingOverlay } from './components/LoadingOverlay/LoadingOverlay'
+import { stopSpinningFavicon } from './utils/spinningFavicon'
 
 function App() {
   const {
@@ -27,6 +29,7 @@ function App() {
   const displayedInterests = INTEREST_ORDER
   const [emailCopied, setEmailCopied] = useState(false)
   const [phoneCopied, setPhoneCopied] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   const fallbackCopyTextToClipboard = (text: string) => {
     if (typeof document === 'undefined') return
@@ -104,6 +107,27 @@ function App() {
       window.clearTimeout(timeout)
     }
   }, [phoneCopied])
+
+  // Stop spinning favicon and hide loading overlay once app is loaded
+  useEffect(() => {
+    // Wait for images and content to load
+    // Longer delay in development to see the loading animation
+    const loadDelay = import.meta.env.DEV ? 2000 : 600
+    const loadTimer = setTimeout(() => {
+      setIsLoading(false)
+    }, loadDelay)
+    
+    // Stop favicon animation
+    const delay = import.meta.env.DEV ? 3000 : 500
+    const faviconTimer = setTimeout(() => {
+      stopSpinningFavicon()
+    }, delay)
+    
+    return () => {
+      clearTimeout(loadTimer)
+      clearTimeout(faviconTimer)
+    }
+  }, [])
   const renderSocialIcon = (platform: string) => {
     const normalized = platform.toLowerCase()
 
@@ -148,10 +172,11 @@ function App() {
 
   return (
     <div className="relative min-h-screen bg-[#f7f6f2] text-slate-800">
+      {isLoading && <LoadingOverlay />}
       <div className="pointer-events-none fixed inset-0 -z-20 bg-gradient-to-b from-white via-[#f7f6f2] to-[#ecebe6]" />
       <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.35),_transparent_60%)]" />
 
-      <main className="relative mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pb-16 pt-10 sm:gap-12 sm:px-6 md:gap-16 md:px-8 lg:gap-20 lg:px-12">
+      <main className={`relative mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pb-16 pt-10 sm:gap-12 sm:px-6 md:gap-16 md:px-8 lg:gap-20 lg:px-12 transition-all duration-300 ${isLoading ? 'blur-sm' : ''}`}>
         <section id="hero" className="grid gap-8 md:gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:items-center">
           <div className="space-y-8">
             <div className="space-y-4">

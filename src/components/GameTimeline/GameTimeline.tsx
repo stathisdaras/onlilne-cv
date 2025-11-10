@@ -1,5 +1,4 @@
-import { useEffect, useMemo, useRef, type CSSProperties } from 'react'
-import edImage from '../../assets/ed.jpg'
+import { useMemo } from 'react'
 import { TimelineStage } from './TimelineStage'
 import './GameTimeline.css'
 
@@ -104,47 +103,9 @@ export function GameTimeline({ experiences, education }: GameTimelineProps) {
 
     return [...workStages, ...eduStages]
   }, [education, experiences])
-  const stageRefs = useRef<(HTMLDivElement | null)[]>([])
-
-  useEffect(() => {
-    const elements = stageRefs.current.filter((el): el is HTMLDivElement => Boolean(el))
-    if (elements.length === 0) return
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const element = entry.target as HTMLElement
-          if (entry.isIntersecting) {
-            element.classList.add('timeline-stage--visible')
-          } else {
-            element.classList.remove('timeline-stage--visible')
-          }
-        })
-      },
-      {
-        root: null,
-        threshold: 0.35,
-        rootMargin: '0px 0px -35% 0px',
-      },
-    )
-
-    elements.forEach((element) => observer.observe(element))
-
-    return () => {
-      elements.forEach((element) => observer.unobserve(element))
-      observer.disconnect()
-    }
-  }, [stages.length])
-
   return (
     <div className="timeline-board">
       <div className="timeline-axis" aria-hidden />
-      <div className="timeline-character" aria-hidden>
-        <div className="timeline-character__avatar">
-          <img src={edImage} alt="" loading="lazy" />
-        </div>
-        <span className="timeline-character__trail" />
-      </div>
       <div className="timeline-track">
         {stages.map((stage, index) => (
           <TimelineStage
@@ -152,11 +113,6 @@ export function GameTimeline({ experiences, education }: GameTimelineProps) {
             stageIndex={index}
             total={stages.length}
             stage={stage}
-            isActive={index === 0}
-            ref={(el) => {
-              stageRefs.current[index] = el
-            }}
-            style={{ '--timeline-stage-index': index } as CSSProperties}
           />
         ))}
       </div>
