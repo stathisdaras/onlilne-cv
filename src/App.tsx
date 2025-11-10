@@ -1,4 +1,4 @@
-import { useEffect, useState, type KeyboardEvent } from 'react'
+import { useEffect, useState, useRef, type KeyboardEvent } from 'react'
 import data from './assets/ed.json'
 import edImage from './assets/ed.jpg'
 import resumePdf from './assets/Efstathios_Daras_Resume.pdf'
@@ -30,6 +30,8 @@ function App() {
   const [emailCopied, setEmailCopied] = useState(false)
   const [phoneCopied, setPhoneCopied] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const profileImageRef = useRef<HTMLImageElement>(null)
+  const [profileImageLoaded, setProfileImageLoaded] = useState(false)
 
   const fallbackCopyTextToClipboard = (text: string) => {
     if (typeof document === 'undefined') return
@@ -110,24 +112,34 @@ function App() {
 
   // Stop spinning favicon and hide loading overlay once app is loaded
   useEffect(() => {
-    // Wait for images and content to load
-    // Longer delay in development to see the loading animation
-    const loadDelay = import.meta.env.DEV ? 2000 : 600
-    const loadTimer = setTimeout(() => {
-      setIsLoading(false)
-    }, loadDelay)
-    
-    // Stop favicon animation
-    const delay = import.meta.env.DEV ? 3000 : 500
-    const faviconTimer = setTimeout(() => {
-      stopSpinningFavicon()
-    }, delay)
+    // Wait for profile image to load, with a maximum timeout
+    if (profileImageLoaded) {
+      // Small delay after image loads for smooth transition
+      const loadTimer = setTimeout(() => {
+        setIsLoading(false)
+        stopSpinningFavicon()
+      }, 300)
+      
+      return () => {
+        clearTimeout(loadTimer)
+      }
+    }
+  }, [profileImageLoaded])
+
+  // Fallback timeout in case image doesn't load
+  useEffect(() => {
+    const maxDelay = import.meta.env.DEV ? 5000 : 2000
+    const fallbackTimer = setTimeout(() => {
+      if (isLoading) {
+        setIsLoading(false)
+        stopSpinningFavicon()
+      }
+    }, maxDelay)
     
     return () => {
-      clearTimeout(loadTimer)
-      clearTimeout(faviconTimer)
+      clearTimeout(fallbackTimer)
     }
-  }, [])
+  }, [isLoading])
   const renderSocialIcon = (platform: string) => {
     const normalized = platform.toLowerCase()
 
@@ -274,7 +286,14 @@ function App() {
           </div>
           <div className="flex justify-center lg:justify-end">
             <div className="relative flex aspect-square w-48 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white shadow-sm sm:w-64 lg:w-80">
-              <img src={edImage} alt={`${name} portrait`} className="h-full w-full object-cover" />
+              <img
+                ref={profileImageRef}
+                src={edImage}
+                alt={`${name} portrait`}
+                className="h-full w-full object-cover"
+                onLoad={() => setProfileImageLoaded(true)}
+                onError={() => setProfileImageLoaded(true)} // Still hide loading even if image fails
+              />
             </div>
           </div>
         </section>
