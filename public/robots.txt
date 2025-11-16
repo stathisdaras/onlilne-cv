@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://stathisdaras.github.io/onlilne-cv/sitemap.xml
+Sitemap: https://stathisdaras.com/sitemap.xml
 
