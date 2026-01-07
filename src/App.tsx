@@ -365,7 +365,7 @@ function App() {
         </section>
 
         <footer className="mb-6 text-center text-xs text-slate-500">
-          Vibe coded with the help of Cursor and GTP-5 Codex.
+          Vibe coded with the help of Cursor, GPT-5 Codex and Claude Sonnet 4.5.
         </footer>
       </main>
     </div>
