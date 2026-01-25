@@ -1,0 +1,230 @@
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: rgba(247, 246, 242, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.navigation--scrolled {
+  background-color: rgba(247, 246, 242, 0.95);
+  border-bottom-color: rgba(226, 232, 240, 0.8);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.navigation__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+@media (min-width: 640px) {
+  .navigation__container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .navigation__container {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .navigation__container {
+    padding: 0 3rem;
+  }
+}
+
+.navigation__brand {
+  flex-shrink: 0;
+}
+
+.navigation__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #0f172a;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.navigation__logo:hover {
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
+  transform: scale(1.05);
+}
+
+.navigation__logo:focus-visible {
+  outline: 2px solid #64748b;
+  outline-offset: 2px;
+}
+
+.navigation__desktop {
+  display: none;
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .navigation__desktop {
+    display: flex;
+  }
+}
+
+.navigation__link {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+  background-color: transparent;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.navigation__link:hover {
+  color: #0f172a;
+  background-color: rgba(226, 232, 240, 0.5);
+}
+
+.navigation__link:focus-visible {
+  outline: 2px solid #64748b;
+  outline-offset: 2px;
+}
+
+.navigation__link--active {
+  color: #0f172a;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+}
+
+.navigation__link--active:hover {
+  background-color: #f8fafc;
+}
+
+.navigation__mobile-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 768px) {
+  .navigation__mobile-toggle {
+    display: none;
+  }
+}
+
+.navigation__mobile-toggle:focus-visible {
+  outline: 2px solid #64748b;
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+.hamburger {
+  position: relative;
+  width: 24px;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #0f172a;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger--open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger--open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger--open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+.navigation__mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem;
+  background-color: rgba(247, 246, 242, 0.98);
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+  animation: slideDown 0.3s ease-out;
+}
+
+@media (min-width: 768px) {
+  .navigation__mobile-menu {
+    display: none;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navigation__mobile-link {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+  background-color: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.navigation__mobile-link:hover {
+  color: #0f172a;
+  background-color: rgba(226, 232, 240, 0.5);
+}
+
+.navigation__mobile-link:focus-visible {
+  outline: 2px solid #64748b;
+  outline-offset: -2px;
+}
+
+.navigation__mobile-link--active {
+  color: #0f172a;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+}
