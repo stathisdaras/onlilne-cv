@@ -34,7 +34,7 @@ function renderIcon(icon?: SkillIconConfig) {
   return (
     <span
       aria-hidden
-      className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 shadow-sm"
+      className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 shadow-sm dark:border-slate-700"
       style={style}
     >
       <img src={icon.src} alt="" className="h-full w-full object-contain" loading="lazy" />
@@ -72,7 +72,7 @@ export function SkillBadgeCloud({ skills }: SkillBadgeCloudProps) {
         return (
           <div
             key={category}
-            className="group relative flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white/70 p-6 shadow-sm backdrop-blur transition duration-300 hover:shadow-md"
+            className="group relative flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white/70 p-6 shadow-sm backdrop-blur transition duration-300 hover:shadow-md dark:border-slate-700 dark:bg-slate-800/70 dark:hover:shadow-lg"
           >
             <span
               className="pointer-events-none absolute inset-x-10 -top-32 h-48 rounded-full opacity-20 transition duration-500 group-hover:opacity-35"
@@ -81,13 +81,13 @@ export function SkillBadgeCloud({ skills }: SkillBadgeCloudProps) {
             />
             <header className="flex items-center justify-between gap-4">
               {renderIcon(icon)}
-              <h3 className="font-display text-lg font-semibold text-slate-800">{titleCase(category)}</h3>
+              <h3 className="font-display text-lg font-semibold text-slate-800 dark:text-slate-100">{titleCase(category)}</h3>
             </header>
             <div className="mt-6 flex flex-wrap gap-2">
               {items.map((skill) => (
                 <span
                   key={skill}
-                  className="inline-flex items-center rounded-full border border-slate-300 bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-slate-700 transition group-hover:-translate-y-0.5"
+                  className="inline-flex items-center rounded-full border border-slate-300 bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-slate-700 transition group-hover:-translate-y-0.5 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200"
                 >
                   {skill}
                 </span>

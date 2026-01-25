@@ -36,19 +36,19 @@ export function TimelineStage({ stage, stageIndex, total }: TimelineStageProps) 
         <div className="timeline-stage__body">
           <header className="timeline-stage__header flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
             <div>
-              <p className="timeline-stage__organization text-xs font-semibold uppercase tracking-[0.35em] text-slate-500">
+              <p className="timeline-stage__organization text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">
                 {stage.organization}
               </p>
-              <h3 className="timeline-stage__title mt-1 text-2xl font-semibold text-slate-900">{stage.title}</h3>
+              <h3 className="timeline-stage__title mt-1 text-2xl font-semibold text-slate-900 dark:text-slate-100">{stage.title}</h3>
             </div>
-            <span className="timeline-stage__time mt-1 inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-mono uppercase tracking-[0.3em] text-slate-600 lg:mt-0">
+            <span className="timeline-stage__time mt-1 inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-mono uppercase tracking-[0.3em] text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 lg:mt-0">
               {stage.timeframe}
             </span>
           </header>
-          <p className="timeline-stage__description text-base leading-7 text-slate-600">{stage.description}</p>
+          <p className="timeline-stage__description text-base leading-7 text-slate-600 dark:text-slate-300">{stage.description}</p>
 
           {stage.contributions.length > 0 && (
-            <div className="timeline-stage__list space-y-2 text-sm text-slate-600">
+            <div className="timeline-stage__list space-y-2 text-sm text-slate-600 dark:text-slate-300">
               {stage.contributions.map((item) => {
                 const trimmed = item.trim()
                 const lower = trimmed.toLowerCase()
@@ -71,8 +71,8 @@ export function TimelineStage({ stage, stageIndex, total }: TimelineStageProps) 
               {stage.stack.map((tech) => {
                 const chipClass =
                   stage.type === 'education'
-                    ? 'border-slate-200 bg-white text-slate-500'
-                    : 'border-slate-300 bg-slate-100 text-slate-600'
+                    ? 'border-slate-200 bg-white text-slate-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400'
+                    : 'border-slate-300 bg-slate-100 text-slate-600 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-300'
                 return (
                   <span
                     key={tech}

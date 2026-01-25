@@ -56,31 +56,31 @@ export function CertificationsCarousel({ certifications, rotationMs = DEFAULT_RO
         {visibleItems.map((cert) => (
           <article
             key={`${cert.certificationName}-${cert.institution}`}
-            className="flex h-full flex-col gap-4 rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm transition hover:shadow-md"
+            className="flex h-full flex-col gap-4 rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm transition hover:shadow-md dark:border-slate-700 dark:bg-slate-800/80 dark:hover:shadow-lg"
           >
             <div className="flex items-center gap-4">
               {cert.icon ? (
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-slate-100">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-700">
                   <img src={cert.icon} alt={cert.institution} className="h-8 w-8 object-contain" loading="lazy" />
                 </div>
               ) : (
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-lg">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-lg dark:bg-slate-700">
                   🎓
                 </div>
               )}
               <div className="space-y-1 text-left">
-                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">{cert.institution}</p>
-                <p className="text-lg font-semibold text-slate-900">{cert.certificationName}</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500 dark:text-slate-400">{cert.institution}</p>
+                <p className="text-lg font-semibold text-slate-900 dark:text-slate-100">{cert.certificationName}</p>
               </div>
             </div>
-            {cert.description ? <p className="text-sm text-slate-600">{cert.description}</p> : null}
+            {cert.description ? <p className="text-sm text-slate-600 dark:text-slate-300">{cert.description}</p> : null}
             {cert.url ? (
               <div className="mt-auto pt-2">
                 <a
                   href={cert.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-slate-700 transition hover:text-slate-900"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-slate-700 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-slate-100"
                 >
                   View credential
                   <span aria-hidden>↗</span>
@@ -97,7 +97,7 @@ export function CertificationsCarousel({ certifications, rotationMs = DEFAULT_RO
             <span
               key={index}
               className={`h-2.5 w-2.5 rounded-full transition ${
-                activeIndices.has(index) ? 'bg-slate-800' : 'bg-slate-300'
+                activeIndices.has(index) ? 'bg-slate-800 dark:bg-slate-200' : 'bg-slate-300 dark:bg-slate-600'
               }`}
               aria-hidden
             />

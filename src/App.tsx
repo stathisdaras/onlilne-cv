@@ -8,9 +8,11 @@ import { INTEREST_ORDER, InterestsGrid } from './components/InterestsGrid/Intere
 import { SkillBadgeCloud } from './components/SkillBadgeCloud/SkillBadgeCloud'
 import { LoadingOverlay } from './components/LoadingOverlay/LoadingOverlay'
 import { Navigation } from './components/Navigation/Navigation'
+import { useDarkMode } from './hooks/useDarkMode'
 import { stopSpinningFavicon } from './utils/spinningFavicon'
 
 function App() {
+  const { isDark, toggleTheme } = useDarkMode()
   const {
     name,
     title,
@@ -184,24 +186,24 @@ function App() {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#f7f6f2] text-slate-800">
+    <div className="relative min-h-screen bg-[#f7f6f2] text-slate-800 transition-colors duration-300 dark:bg-slate-900 dark:text-slate-100">
       {isLoading && <LoadingOverlay />}
-      <Navigation />
-      <div className="pointer-events-none fixed inset-0 -z-20 bg-gradient-to-b from-white via-[#f7f6f2] to-[#ecebe6]" />
-      <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.35),_transparent_60%)]" />
+      <Navigation isDark={isDark} onToggleTheme={toggleTheme} />
+      <div className="pointer-events-none fixed inset-0 -z-20 bg-gradient-to-b from-white via-[#f7f6f2] to-[#ecebe6] dark:from-slate-950 dark:via-slate-900 dark:to-slate-800" />
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.35),_transparent_60%)] dark:bg-[radial-gradient(circle_at_top,_rgba(100,116,139,0.25),_transparent_60%)]" />
 
       <main className={`relative mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pb-16 pt-24 sm:gap-12 sm:px-6 md:gap-16 md:px-8 lg:gap-20 lg:px-12 transition-all duration-300 ${isLoading ? 'blur-sm' : ''}`}>
         <section id="hero" className="grid gap-8 md:gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:items-center">
           <div className="space-y-8">
             <div className="space-y-4">
-              <h1 className="font-display text-4xl font-semibold text-slate-900 sm:text-5xl lg:text-6xl">{name}</h1>
-              <p className="text-lg text-slate-600 sm:text-xl">{title}</p>
+              <h1 className="font-display text-4xl font-semibold text-slate-900 dark:text-slate-50 sm:text-5xl lg:text-6xl">{name}</h1>
+              <p className="text-lg text-slate-600 dark:text-slate-300 sm:text-xl">{title}</p>
               {socials.length > 0 ? (
-                <div className="flex flex-wrap gap-3 text-slate-500">
+                <div className="flex flex-wrap gap-3 text-slate-500 dark:text-slate-400">
                   {socials.map((social) => (
                     <a
                       key={social.name}
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white transition hover:bg-slate-100 hover:text-slate-900"
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white transition hover:bg-slate-100 hover:text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-slate-100"
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -214,11 +216,11 @@ function App() {
                 </div>
               ) : null}
             </div>
-            <p className="max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">{briefProfile}</p>
-            <div className="flex flex-col gap-3 text-sm text-slate-600 sm:flex-row sm:flex-wrap sm:gap-4">
-              <div className="group relative inline-flex w-full items-center gap-1 rounded-full border border-slate-200 bg-white px-2.5 py-1.5 transition hover:bg-slate-100 hover:text-slate-900 sm:w-auto">
+            <p className="max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300 sm:text-lg">{briefProfile}</p>
+            <div className="flex flex-col gap-3 text-sm text-slate-600 dark:text-slate-300 sm:flex-row sm:flex-wrap sm:gap-4">
+              <div className="group relative inline-flex w-full items-center gap-1 rounded-full border border-slate-200 bg-white px-2.5 py-1.5 transition hover:bg-slate-100 hover:text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-slate-100 sm:w-auto">
                 <a
-                  className="flex h-7 w-7 items-center justify-center rounded-full border border-transparent transition hover:border-slate-200 hover:bg-slate-200"
+                  className="flex h-7 w-7 items-center justify-center rounded-full border border-transparent transition hover:border-slate-200 hover:bg-slate-200 dark:hover:border-slate-600 dark:hover:bg-slate-600"
                   href={`mailto:${email}`}
                   aria-label={`Email ${name}`}
                   title="Open email client"
@@ -226,7 +228,7 @@ function App() {
                   <span className="text-lg">✉️</span>
                 </a>
                 <span
-                  className="select-text rounded-md px-2 py-1 text-slate-600 transition group-hover:text-slate-900"
+                  className="select-text rounded-md px-2 py-1 text-slate-600 transition group-hover:text-slate-900 dark:text-slate-300 dark:group-hover:text-slate-100"
                   role="button"
                   tabIndex={0}
                   onClick={copyEmail}
@@ -239,15 +241,15 @@ function App() {
                   <span
                     role="status"
                     aria-live="polite"
-                    className="pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 rounded-full bg-slate-900 px-3 py-1 text-xs font-medium text-white shadow-md"
+                    className="pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 rounded-full bg-slate-900 px-3 py-1 text-xs font-medium text-white shadow-md dark:bg-slate-700"
                   >
                     Copied!
                   </span>
                 ) : null}
               </div>
-              <div className="group relative inline-flex w-full items-center gap-1 rounded-full border border-slate-200 bg-white px-2.5 py-1.5 transition hover:bg-slate-100 hover:text-slate-900 sm:w-auto">
+              <div className="group relative inline-flex w-full items-center gap-1 rounded-full border border-slate-200 bg-white px-2.5 py-1.5 transition hover:bg-slate-100 hover:text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-slate-100 sm:w-auto">
                 <a
-                  className="flex h-7 w-7 items-center justify-center rounded-full border border-transparent transition hover:border-slate-200 hover:bg-slate-200"
+                  className="flex h-7 w-7 items-center justify-center rounded-full border border-transparent transition hover:border-slate-200 hover:bg-slate-200 dark:hover:border-slate-600 dark:hover:bg-slate-600"
                   href={`tel:${phoneHref}`}
                   aria-label={`Call ${phone}`}
                   title="Call phone number"
@@ -255,7 +257,7 @@ function App() {
                   <span className="text-lg">📱</span>
                 </a>
                 <span
-                  className="select-text rounded-md px-2 py-1 text-slate-600 transition group-hover:text-slate-900"
+                  className="select-text rounded-md px-2 py-1 text-slate-600 transition group-hover:text-slate-900 dark:text-slate-300 dark:group-hover:text-slate-100"
                   role="button"
                   tabIndex={0}
                   onClick={copyPhone}
@@ -268,18 +270,18 @@ function App() {
                   <span
                     role="status"
                     aria-live="polite"
-                    className="pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 rounded-full bg-slate-900 px-3 py-1 text-xs font-medium text-white shadow-md"
+                    className="pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 rounded-full bg-slate-900 px-3 py-1 text-xs font-medium text-white shadow-md dark:bg-slate-700"
                   >
                     Copied!
                   </span>
                 ) : null}
               </div>
               <a
-                className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 transition hover:bg-slate-100 hover:text-slate-900 sm:w-auto"
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 transition hover:bg-slate-100 hover:text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-slate-100 sm:w-auto"
                 href={resumePdf}
                 download="Efstathios_Daras_Resume.pdf"
               >
-                <span aria-hidden className="text-lg text-emerald-600 transition group-hover:text-emerald-700">
+                <span aria-hidden className="text-lg text-emerald-600 transition group-hover:text-emerald-700 dark:text-emerald-400 dark:group-hover:text-emerald-300">
                   ⬇️
                 </span>
                 <span>Download CV</span>
@@ -287,7 +289,7 @@ function App() {
             </div>
           </div>
           <div className="flex justify-center lg:justify-end">
-            <div className="relative flex aspect-square w-48 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white shadow-sm sm:w-64 lg:w-80">
+            <div className="relative flex aspect-square w-48 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-800 sm:w-64 lg:w-80">
               <img
                 ref={profileImageRef}
                 src={edImage}
@@ -300,27 +302,27 @@ function App() {
           </div>
         </section>
 
-        <section id="skills" className="border-t border-slate-200 pt-8">
+        <section id="skills" className="border-t border-slate-200 pt-8 dark:border-slate-700">
           <div className="mb-8 flex flex-col items-center text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500">Skills</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">Skills</p>
           </div>
           <SkillBadgeCloud skills={skills} />
         </section>
 
-        <section id="journey" className="border-t border-slate-200 pt-8">
+        <section id="journey" className="border-t border-slate-200 pt-8 dark:border-slate-700">
           <div className="mx-auto flex max-w-5xl flex-col gap-12">
             <div className="flex flex-col items-center gap-4 text-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500">Work &amp; Education</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">Work &amp; Education</p>
             </div>
             <GameTimeline experiences={workExperiences} education={education} />
           </div>
         </section>
 
-        <section id="certifications" className="border-t border-slate-200 pt-8">
+        <section id="certifications" className="border-t border-slate-200 pt-8 dark:border-slate-700">
           <div className="flex flex-col items-center gap-6 text-center">
             <div className="space-y-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500">Certifications</p>
-              <p className="mx-auto max-w-2xl text-base text-slate-600">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">Certifications</p>
+              <p className="mx-auto max-w-2xl text-base text-slate-600 dark:text-slate-300">
                 I have always emphasized on continuous learning and staying updated with the latest technologies and best practices.
               </p>
             </div>
@@ -328,10 +330,10 @@ function App() {
           </div>
         </section>
 
-        <section id="languages" className="border-t border-slate-200 pt-8">
+        <section id="languages" className="border-t border-slate-200 pt-8 dark:border-slate-700">
           <div className="flex flex-col items-center gap-4 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500">Languages</p>
-            <p className="max-w-2xl text-sm text-slate-600">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">Languages</p>
+            <p className="max-w-2xl text-sm text-slate-600 dark:text-slate-300">
               Once I read that learning a new language is beneficial for the brain. Striving with german ever since!
             </p>
           </div>
@@ -339,34 +341,34 @@ function App() {
             {languages.map((lang) => (
               <article
                 key={lang.name}
-                className="flex h-full flex-col gap-4 rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm transition hover:shadow-md"
+                className="flex h-full flex-col gap-4 rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm transition hover:shadow-md dark:border-slate-700 dark:bg-slate-800/80 dark:hover:shadow-lg"
               >
                 <div className="flex items-center gap-4">
                   <span className="text-3xl" aria-hidden>
                     {lang.flag ?? '🌐'}
                   </span>
                   <div className="text-left">
-                    <p className="text-lg font-semibold text-slate-900">{lang.name}</p>
-                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">{lang.proficiency}</p>
+                    <p className="text-lg font-semibold text-slate-900 dark:text-slate-100">{lang.name}</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">{lang.proficiency}</p>
                   </div>
                 </div>
-                {lang.description ? <p className="text-sm text-slate-600">{lang.description}</p> : null}
-                <p className="mt-auto text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">{lang.institute}</p>
+                {lang.description ? <p className="text-sm text-slate-600 dark:text-slate-300">{lang.description}</p> : null}
+                <p className="mt-auto text-xs font-semibold uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">{lang.institute}</p>
               </article>
             ))}
           </div>
         </section>
 
-        <section id="interests" className="border-t border-slate-200 pt-8">
+        <section id="interests" className="border-t border-slate-200 pt-8 dark:border-slate-700">
           <div className="flex flex-col items-center gap-6 text-center">
             <div className="space-y-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500">Beyond the keyboard</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">Beyond the keyboard</p>
             </div>
             <InterestsGrid interests={displayedInterests} />
           </div>
         </section>
 
-        <footer className="mb-6 text-center text-xs text-slate-500">
+        <footer className="mb-6 text-center text-xs text-slate-500 dark:text-slate-400">
           Vibe coded with the help of Cursor, GPT-5 Codex and Claude Sonnet 4.5.
         </footer>
       </main>
