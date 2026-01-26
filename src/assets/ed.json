@@ -92,9 +92,11 @@
         "padding": 6
       },
       "items": [
+        "Spring AI",
         "Python",
         "Langchain",
-        "Spring AI",
+        "ChromaDB",
+        "pgvector",
         "NumPy",
         "TensorFlow"
       ]
