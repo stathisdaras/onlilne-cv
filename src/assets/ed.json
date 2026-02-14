@@ -221,6 +221,13 @@
   ],
   "certifications": [
     {
+      "certificationName": "Gen AI Enablement Program for Corporations",
+      "institution": "Infosys Wingspan",
+      "icon": "https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg",
+      "url": "",
+      "description": "Covered RAG pipelines, agentic AI patterns, and vector databases for enterprise use cases. As a capstone project, built an AI agentic assistant for an internal case management tool — shortlisted in the top 3 at an internal company competition."
+    },
+    {
       "certificationName": "Improving Deep Neural Networks",
       "institution": "DeepLearning.AI · Coursera",
       "icon": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/b4/5cb90bb92f420b99bf323a0356f451/Icon.png?auto=format%2Ccompress&dpr=2&w=80&h=80",
