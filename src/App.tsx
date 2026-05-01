@@ -422,7 +422,7 @@ function App() {
         </section>
 
         <footer className="mb-6 text-center text-xs text-slate-500 dark:text-slate-400">
-          Vibe coded with the help of Cursor, GPT-5 Codex and Claude Sonnet 4.5.
+          Developed using Cursor and Claude Code, models used: Codex, Sonnet and Opus.
         </footer>
       </main>
     </div>
