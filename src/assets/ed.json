@@ -22,7 +22,7 @@
   "phone": "+41 78 962 04 44",
   "title": "Full Stack Engineer",
   "profileImage": "",
-  "briefProfile": "I am Stathis! I am a Product Engineer based in Zurich, Switzerland. I enjoy building useful software that solves real life problems and while at it, learn as much as I can.  I built this website in order to learn react and practice vibe coding. Already impressed by the coding models out there !",
+  "briefProfile": "Product Engineer based in Zurich, passionate about building useful software that solves real-life problems.",
   "skills": [
     {
       "category": "Backend",
@@ -42,7 +42,7 @@
     {
       "category": "Frontend",
       "icon": {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Typescript.svg/1200px-Typescript.svg.png",
+        "src": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg",
         "background": "white",
         "padding": 6
       },

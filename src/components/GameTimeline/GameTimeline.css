@@ -5,7 +5,7 @@
 
 @media (max-width: 767px) {
   .timeline-board {
-    --timeline-offset: clamp(1.1rem, 10vw, 2rem);
+    --timeline-offset: 0rem;
   }
 }
 
@@ -28,8 +28,7 @@
 
 @media (max-width: 767px) {
   .timeline-axis {
-    opacity: 0.45;
-    width: 1.5px;
+    display: none;
   }
 }
 
@@ -49,7 +48,7 @@
 @media (max-width: 767px) {
   .timeline-track {
     gap: 2.5rem;
-    padding-left: calc(var(--timeline-offset) + 0.8rem);
+    padding-left: 0;
   }
 }
 
@@ -171,6 +170,10 @@
 
   .timeline-stage__grid {
     grid-template-columns: 1fr;
+  }
+
+  .timeline-stage__marker {
+    display: none;
   }
 
   .timeline-stage__checkpoint {

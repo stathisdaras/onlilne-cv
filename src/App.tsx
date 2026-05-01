@@ -1,13 +1,15 @@
 import { useEffect, useState, useRef, type KeyboardEvent } from 'react'
 import data from './assets/ed.json'
 import edImage from './assets/ed.jpg'
-import resumePdf from './assets/Efstathios_Daras_Resume.pdf'
+import resumePdfLatest from './assets/Efstathios_Daras_Resume_Latest.pdf'
+import resumePdf2024 from './assets/Efstathios_Daras_Resume.pdf'
 import { CertificationsCarousel } from './components/CertificationsCarousel/CertificationsCarousel'
 import { GameTimeline } from './components/GameTimeline/GameTimeline'
 import { INTEREST_ORDER, InterestsGrid } from './components/InterestsGrid/InterestsGrid'
 import { SkillBadgeCloud } from './components/SkillBadgeCloud/SkillBadgeCloud'
 import { LoadingOverlay } from './components/LoadingOverlay/LoadingOverlay'
 import { Navigation } from './components/Navigation/Navigation'
+import { SkillCycler } from './components/SkillCycler/SkillCycler'
 import { useDarkMode } from './hooks/useDarkMode'
 import { stopSpinningFavicon } from './utils/spinningFavicon'
 
@@ -16,7 +18,6 @@ function App() {
   const {
     name,
     title,
-    briefProfile,
     email,
     phone,
     socials = [],
@@ -35,6 +36,24 @@ function App() {
   const [isLoading, setIsLoading] = useState(true)
   const profileImageRef = useRef<HTMLImageElement>(null)
   const [profileImageLoaded, setProfileImageLoaded] = useState(false)
+  const [cvDropdownOpen, setCvDropdownOpen] = useState(false)
+  const cvDropdownRef = useRef<HTMLDivElement>(null)
+
+  const cvVersions = [
+    { label: 'Latest', filename: 'Efstathios_Daras_Resume_Latest.pdf', href: resumePdfLatest },
+    { label: '2024', filename: 'Efstathios_Daras_Resume_2024.pdf', href: resumePdf2024 },
+  ]
+
+  useEffect(() => {
+    if (!cvDropdownOpen) return
+    const handleOutsideClick = (e: MouseEvent) => {
+      if (cvDropdownRef.current && !cvDropdownRef.current.contains(e.target as Node)) {
+        setCvDropdownOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleOutsideClick)
+    return () => document.removeEventListener('mousedown', handleOutsideClick)
+  }, [cvDropdownOpen])
 
   const fallbackCopyTextToClipboard = (text: string) => {
     if (typeof document === 'undefined') return
@@ -216,7 +235,7 @@ function App() {
                 </div>
               ) : null}
             </div>
-            <p className="max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300 sm:text-lg">{briefProfile}</p>
+            <SkillCycler />
             <div className="flex flex-col gap-3 text-sm text-slate-600 dark:text-slate-300 sm:flex-row sm:flex-wrap sm:gap-4">
               <div className="group relative inline-flex w-full items-center gap-1 rounded-full border border-slate-200 bg-white px-2.5 py-1.5 transition hover:bg-slate-100 hover:text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-slate-100 sm:w-auto">
                 <a
@@ -276,16 +295,50 @@ function App() {
                   </span>
                 ) : null}
               </div>
-              <a
-                className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 transition hover:bg-slate-100 hover:text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-slate-100 sm:w-auto"
-                href={resumePdf}
-                download="Efstathios_Daras_Resume.pdf"
-              >
-                <span aria-hidden className="text-lg text-emerald-600 transition group-hover:text-emerald-700 dark:text-emerald-400 dark:group-hover:text-emerald-300">
-                  ⬇️
-                </span>
-                <span>Download CV</span>
-              </a>
+              <div ref={cvDropdownRef} className="relative w-full sm:w-auto">
+                <button
+                  type="button"
+                  aria-haspopup="listbox"
+                  aria-expanded={cvDropdownOpen}
+                  onClick={() => setCvDropdownOpen(o => !o)}
+                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 transition hover:bg-slate-100 hover:text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-slate-100 sm:w-auto"
+                >
+                  <span aria-hidden className="text-lg text-emerald-600 transition group-hover:text-emerald-700 dark:text-emerald-400 dark:group-hover:text-emerald-300">
+                    ⬇️
+                  </span>
+                  <span>Download CV</span>
+                  <svg
+                    aria-hidden
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className={`h-4 w-4 text-slate-400 transition-transform duration-200 dark:text-slate-500 ${cvDropdownOpen ? 'rotate-180' : ''}`}
+                  >
+                    <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+                  </svg>
+                </button>
+                {cvDropdownOpen && (
+                  <ul
+                    role="listbox"
+                    aria-label="CV versions"
+                    className="absolute left-0 z-10 mt-2 w-full min-w-max overflow-hidden rounded-xl border border-slate-200 bg-white py-1 shadow-lg dark:border-slate-700 dark:bg-slate-800 sm:left-auto sm:right-0"
+                  >
+                    {cvVersions.map(({ label, filename, href }) => (
+                      <li key={filename} role="option" aria-selected={false}>
+                        <a
+                          href={href}
+                          download={filename}
+                          onClick={() => setCvDropdownOpen(false)}
+                          className="flex items-center gap-3 px-4 py-2.5 text-sm text-slate-700 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-slate-100"
+                        >
+                          <span aria-hidden className="text-emerald-600 dark:text-emerald-400">⬇️</span>
+                          {label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </div>
           </div>
           <div className="flex justify-center lg:justify-end">
