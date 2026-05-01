@@ -7,9 +7,9 @@ const PHRASES = [
   { prefix: 'I am passionate about ', skills: ['Clean Code', 'Customer Satisfaction', 'Product Engineering', 'User Experience', 'Beautiful Design'] },
 ]
 
-const HOLD_MS = 2400
-const SKILL_FADE_MS = 600
-const PREFIX_FADE_MS = 700
+const HOLD_MS = 900
+const SKILL_FADE_MS = 250
+const PREFIX_FADE_MS = 300
 
 export function SkillCycler() {
   const [phraseIdx, setPhraseIdx] = useState(0)
