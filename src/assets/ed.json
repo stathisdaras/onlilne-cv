@@ -27,7 +27,7 @@
     {
       "category": "Backend",
       "icon": {
-        "src": "https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg",
+        "src": "/icons/java.svg",
         "background": "#ffffff",
         "padding": 6
       },
@@ -42,7 +42,7 @@
     {
       "category": "Frontend",
       "icon": {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg",
+        "src": "/icons/typescript.svg",
         "background": "white",
         "padding": 6
       },
@@ -57,7 +57,7 @@
     {
       "category": "Datastores/Brokers",
       "icon": {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg",
+        "src": "/icons/postgresql.svg",
         "background": "#ffffff",
         "padding": 6
       },
@@ -73,7 +73,7 @@
     {
       "category": "DevOps",
       "icon": {
-        "src": "https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png",
+        "src": "/icons/docker.png",
         "background": "#ffffff",
         "padding": 6
       },
@@ -87,7 +87,7 @@
     {
       "category": "AI Tools",
       "icon": {
-        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6jeG6tKbuzZ3g21rSJDW83kZpzlgxoRqQvg&s",
+        "src": "/icons/ai-tools.png",
         "background": "",
         "padding": 6
       },
@@ -109,9 +109,7 @@
       "startDate": "Nov 2024",
       "endDate": "Present",
       "description": "Leading the architectural design and full stack development of the Azure cloud-based application responsible for the management of the company's Group Investigations, using Angular and Java 11 Spring Boot.",
-      "mainContributions": [
-        
-      ],
+      "mainContributions": [],
       "techStack": [
         "Angular",
         "Java 11",
@@ -119,17 +117,16 @@
         "PostgreSQL",
         "Azure"
       ],
-      "icon": "https://cdn.brandfetch.io/idfWi_8mFJ/theme/dark/symbol.svg?c=1bxid64Mup7aczewSAYMX&t=1679041852192",
+      "icon": "/icons/ubs.svg",
       "url": "https://www.ubs.com/"
     },
     {
       "company": "iptiQ by Swiss Re",
-      "position": "Senior Software Engineer", 
+      "position": "Senior Software Engineer",
       "startDate": "Apr 2021",
       "endDate": "Oct 2024",
       "description": "As a member of the Commissions & Technical Accounting team at iptiQ, I have been responsible for implementing features related to the customers' payment plan, dunning reminders, bookkeeping and commissioning.",
-      "mainContributions": [
-      ],
+      "mainContributions": [],
       "techStack": [
         "Kotlin",
         "Spring Boot Microservices",
@@ -140,39 +137,37 @@
         "Docker",
         "Kubernetes"
       ],
-      "icon": "https://www.iptiq.com/.resources/swissre-iptiq/webresources/img/logos/SR_Logo_IptiQ.png",
+      "icon": "/icons/iptiq.png",
       "url": "https://www.iptiq.com/"
     },
     {
       "company": "TX Group, Tamedia",
       "position": "Senior Software Engineer",
       "startDate": "Sep 2019",
-      "endDate": "Mar 2021", 
+      "endDate": "Mar 2021",
       "description": "My responsibilities included the design and implementation of the core functionalities of the company's in-house CMS.",
-      "mainContributions": [
-      ],
+      "mainContributions": [],
       "techStack": [
         "Java 11",
-        "Spring Boot Microservices", 
+        "Spring Boot Microservices",
         "MariaDB",
         "Elasticsearch",
         "RabbitMQ",
         "Websockets"
       ],
-      "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Logo_tx_group.png/1599px-Logo_tx_group.png?20200224103630",
+      "icon": "/icons/txgroup.png",
       "url": "https://tx.group/"
     },
     {
       "company": "Upstream Systems (GR), Athens",
-      "position": "Senior Software Engineer", 
+      "position": "Senior Software Engineer",
       "startDate": "Sep 2015",
       "endDate": "Aug 2019",
       "description": "As a member in various teams throughout my career in Upstream, a Digital Marketing and Mobile Monetization player based in Athens, my responsibilities spanned from legacy migrations to designing and implementing new stand-alone applications.",
-      "mainContributions": [
-      ],
+      "mainContributions": [],
       "techStack": [
         "Java 8",
-        "Spring Boot Microservices", 
+        "Spring Boot Microservices",
         "PostgreSQL",
         "Redis",
         "Cassandra",
@@ -181,17 +176,17 @@
         "JBoss",
         "JMS"
       ],
-      "icon": "https://www.upstreamsystems.com/wp-content/themes/theme/dist/images/brand/inverted.svg",
+      "icon": "/icons/upstream.svg",
       "iconBackground": "#1a1a1a",
       "url": "https://www.upstreamsystems.com/"
-    },{
+    },
+    {
       "company": "Appart S.A (GR), Athens",
       "position": "Junior Full Stack Engineer",
       "startDate": "May 2013",
       "endDate": "Sep 2015",
       "description": "As a member of the Campaign Management team, I have participated in different projects and cooperated with various stakeholders from the world of Telecom Service Providers like Vodafone GR, Vodafone AL and Hellas On Line.",
-      "mainContributions": [
-      ],
+      "mainContributions": [],
       "techStack": [
         "Java 6",
         "CakePHP",
@@ -202,19 +197,19 @@
         "MongoDB",
         "ActiveMQ"
       ],
-      "icon": "https://app-art.gr/wp-content/uploads/2022/09/AppArt-Logo.svg",
+      "icon": "/icons/appart.svg",
       "url": "https://www.app-art.gr/"
     }
   ],
   "education": [
     {
       "institution": "Polytechnic School of University of Patras (GR), Patras",
-      "degree": "Diploma in Electrical & Computer Engineering", 
+      "degree": "Diploma in Electrical & Computer Engineering",
       "startDate": "Sep 2004",
       "endDate": "Mar 2012",
       "thesis": "Software development for simulation of loudspeaker-enclosure systems",
       "supervisor": "Prof. Dr. John Mourjopoulos, mourjop@upatras.gr",
-      "icon": "https://www.ece.upatras.gr/images/ENGLISH_VERSION/LOGO/LogoVersionEN.png",
+      "icon": "/icons/upatras.png",
       "iconBackground": "#002855",
       "url": "https://www.ece.upatras.gr/index.php/en/"
     }
@@ -223,49 +218,49 @@
     {
       "certificationName": "Gen AI Enablement Program for Corporations",
       "institution": "Infosys Wingspan",
-      "icon": "https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg",
+      "icon": "/icons/infosys.svg",
       "url": "",
       "description": "Covered RAG pipelines, agentic AI patterns, and vector databases for enterprise use cases. As a capstone project, built an AI agentic assistant for an internal case management tool — shortlisted in the top 3 at an internal company competition."
     },
     {
       "certificationName": "Improving Deep Neural Networks",
       "institution": "DeepLearning.AI · Coursera",
-      "icon": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/b4/5cb90bb92f420b99bf323a0356f451/Icon.png?auto=format%2Ccompress&dpr=2&w=80&h=80",
+      "icon": "/icons/deeplearningai.png",
       "url": "https://coursera.org/share/3a06397ccefc5ba9357ca1130977010c",
       "description": "Instructor Andrew Ng covered hyperparameter tuning, regularization, and optimization techniques."
     },
     {
       "certificationName": "Neural Networks & Deep Learning",
       "institution": "DeepLearning.AI · Coursera",
-      "icon": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/b4/5cb90bb92f420b99bf323a0356f451/Icon.png?auto=format%2Ccompress&dpr=2&w=80&h=80",
+      "icon": "/icons/deeplearningai.png",
       "url": "https://coursera.org/share/7a33252473e4e9fb213cd2987380a4a5",
       "description": "Learned deep learning foundations with Andrew Ng, focusing on backpropagation, matrix multiplication and usage of python tools."
     },
     {
       "certificationName": "Professional Scrum Master 1",
       "institution": "Scrum.org",
-      "icon": "https://scrumorg-website-prod.s3.amazonaws.com/drupal/inline-images/2022-09/psm-400x400.png",
+      "icon": "/icons/psm.png",
       "url": "https://www.dropbox.com/scl/fi/qwgvs1fi0ol87e0bxuci2/PSM-I.pdf?rlkey=msc1vh91nnf43smkna900fsgd&st=xq0jwpja&dl=0",
       "description": "Tought me how to facilitate agile projects by following the Agile Manifesto and the Scrum Framework."
     },
     {
       "certificationName": "Extreme Java 8",
       "institution": "Heinz Kabutz · JavaSpecialists",
-      "icon": "https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg",
+      "icon": "/icons/java.svg",
       "url": "https://www.dropbox.com/scl/fi/gdn2voj69fs1gldum2lmd/Certificate_XJ_ADV_J8_Daras.pdf?rlkey=be4rgyvhqnbzsciemi21vshuu&st=3dj8zxb4&dl=0",
       "description": "Advanced workshop by Java Champion Dr. Heinz Kabutz on concurrency, lambdas, and performance tuning."
     },
     {
       "certificationName": "Advanced Data Structures in Java",
       "institution": "University of California San Diego · Coursera",
-      "icon": "https://e7.pngegg.com/pngimages/651/738/png-clipart-coursera-logo-computer-icons-sss-logo-blue-text-thumbnail.png",
+      "icon": "/icons/coursera.png",
       "url": "https://coursera.org/share/c36134c84f680d1b08c2df37ec1583f2",
       "description": "Learned advanced data structures and algorithms in Java, including tree-based data structures, graph algorithms."
     },
     {
       "certificationName": "Introduction to Computer Networks",
       "institution": "Coursera",
-      "icon": "https://e7.pngegg.com/pngimages/651/738/png-clipart-coursera-logo-computer-icons-sss-logo-blue-text-thumbnail.png",
+      "icon": "/icons/coursera.png",
       "url": "https://www.dropbox.com/scl/fi/70peypm9za8wqzvvu98dp/Introduction2CompNetworks.pdf?rlkey=b2ypzktj3i360sn50wie6rdcl&st=4bm87yrf&dl=0",
       "description": "Learned the fundamentals of computer networks, including the OSI model, IP addressing, and network protocols."
     }
