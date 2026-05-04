@@ -1,0 +1,56 @@
+{
+  "workExperiences": {
+    "UBS": {
+      "description": "Verantwortlich für Architektur und Full-Stack-Entwicklung einer Azure-basierten Anwendung zur Verwaltung der konzernweiten Ermittlungsvorgänge, entwickelt mit Angular und Java 11 Spring Boot."
+    },
+    "iptiQ by Swiss Re": {
+      "description": "Als Mitglied des Teams für Provisionen & Technisches Rechnungswesen war ich zuständig für Funktionen rund um Zahlungspläne, Mahnwesen, Buchhaltung und Provisionsabrechnung."
+    },
+    "TX Group, Tamedia": {
+      "description": "Zu meinen Aufgaben gehörten Design und Implementierung der Kernfunktionalitäten des unternehmenseigenen Content-Management-Systems."
+    },
+    "Upstream Systems (GR), Athens": {
+      "description": "In verschiedenen Teams bei Upstream, einem Anbieter für Digital Marketing und Mobile Monetization in Athen, reichten meine Aufgaben von Legacy-Migrationen bis zur Konzeption und Umsetzung neuer eigenständiger Anwendungen."
+    },
+    "Appart S.A (GR), Athens": {
+      "description": "Als Mitglied des Campaign-Management-Teams arbeitete ich an verschiedenen Projekten und kooperierte mit Stakeholdern aus der Telekommunikationsbranche, darunter Vodafone GR, Vodafone AL und Hellas On Line."
+    }
+  },
+  "certifications": {
+    "Gen AI Enablement Program for Corporations": {
+      "description": "Behandelte RAG-Pipelines, agentische KI-Muster und Vektordatenbanken für den Unternehmenseinsatz. Als Abschlussprojekt wurde ein KI-Assistent für ein internes Fallverwaltungssystem entwickelt — unter den Top 3 bei einem internen Firmenwettbewerb."
+    },
+    "Improving Deep Neural Networks": {
+      "description": "Andrew Ng behandelte Hyperparameter-Tuning, Regularisierung und Optimierungsverfahren."
+    },
+    "Neural Networks & Deep Learning": {
+      "description": "Deep-Learning-Grundlagen mit Andrew Ng: Backpropagation, Matrizenmultiplikation und Python-Werkzeuge."
+    },
+    "Professional Scrum Master 1": {
+      "description": "Vermittelt, wie agile Projekte nach dem Agilen Manifest und dem Scrum-Framework geleitet werden."
+    },
+    "Extreme Java 8": {
+      "description": "Fortgeschrittener Workshop von Java Champion Dr. Heinz Kabutz zu Nebenläufigkeit, Lambdas und Performance-Optimierung."
+    },
+    "Advanced Data Structures in Java": {
+      "description": "Fortgeschrittene Datenstrukturen und Algorithmen in Java: baumbasierte Strukturen und Graphalgorithmen."
+    },
+    "Introduction to Computer Networks": {
+      "description": "Grundlagen der Computernetzwerke: OSI-Modell, IP-Adressierung und Netzwerkprotokolle."
+    }
+  },
+  "spokenLanguages": {
+    "Greek": {
+      "description": "In Griechenland geboren und aufgewachsen."
+    },
+    "English": {
+      "description": "Ich nutze Englisch täglich – beruflich mit internationalen Kollegen und privat mit meiner Frau."
+    },
+    "German": {
+      "description": "Ich habe kürzlich erfolgreich das Goethe-B2-Examen abgelegt und bereite mich derzeit auf das C1-Examen vor. Noch nicht fließend, aber ich kann Gespräche führen und verstehe den größten Teil."
+    },
+    "Spanish": {
+      "description": "Durch mein Erasmus-Programm in Spanien erworben. Ich kann einfache Gespräche führen und verstehe einen Großteil des Inhalts."
+    }
+  }
+}

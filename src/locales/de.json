@@ -1,0 +1,60 @@
+{
+  "nav": {
+    "about": "Über mich",
+    "skills": "Fähigkeiten",
+    "experience": "Erfahrung",
+    "certifications": "Zertifizierungen",
+    "languages": "Sprachen",
+    "interests": "Interessen",
+    "switchToLight": "Hellmodus aktivieren",
+    "switchToDark": "Dunkelmodus aktivieren",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen"
+  },
+  "hero": {
+    "downloadCv": "CV herunterladen",
+    "openEmail": "E-Mail-Client öffnen",
+    "copyEmail": "E-Mail-Adresse kopieren",
+    "callPhone": "Anrufen",
+    "copyPhone": "Telefonnummer kopieren",
+    "copied": "Kopiert!",
+    "cvVersions": "CV-Versionen",
+    "latest": "Aktuell",
+    "year2024": "2024"
+  },
+  "sections": {
+    "skills": "Fähigkeiten",
+    "journey": "Beruf & Ausbildung",
+    "certifications": "Zertifizierungen",
+    "certDesc": "Kontinuierliches Lernen und das Verfolgen neuer Technologien und Best Practices sind mir stets wichtig gewesen.",
+    "languages": "Sprachen",
+    "langDesc": "Ich habe einmal gelesen, dass das Erlernen einer Sprache gut fürs Gehirn ist. Seitdem ringe ich mit dem Deutschen!",
+    "interests": "Abseits der Tastatur"
+  },
+  "timeline": {
+    "present": "Heute",
+    "thesis": "Abschlussarbeit",
+    "supervisor": "Betreuer",
+    "eduDescription": "Schwerpunkt Softwareentwicklung und Informatik."
+  },
+  "certifications": {
+    "viewCredential": "Zertifikat ansehen"
+  },
+  "interests": {
+    "strengthTraining": "Krafttraining & Fitness",
+    "nonFiction": "Sachbuchliteratur",
+    "boardGames": "Brettspiele & Schach",
+    "coffee": "Kaffeezubereitung"
+  },
+  "footer": {
+    "text": "Entwickelt mit Cursor und Claude Code, verwendete Modelle: Codex, Sonnet und Opus."
+  },
+  "cycler": {
+    "phrases": [
+      { "prefix": "Ich schätze ", "skills": ["Vibe Coding", "Troubleshooting", "Problemlösung", "Mentoring"] },
+      { "prefix": "Ich programmiere gern in ", "skills": ["Java", "Kotlin", "TypeScript", "Python", "SQL"] },
+      { "prefix": "Ich entwickle gern ", "skills": ["Verteilte Systeme", "Skalierbare Backends", "Microservices", "REST APIs", "KI-Werkzeuge"] },
+      { "prefix": "Ich begeistere mich für ", "skills": ["Clean Code", "Kundenzufriedenheit", "Product Engineering", "User Experience", "Schönes Design"] }
+    ]
+  }
+}

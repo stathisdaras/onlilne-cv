@@ -11,10 +11,13 @@ import { LoadingOverlay } from './components/LoadingOverlay/LoadingOverlay'
 import { Navigation } from './components/Navigation/Navigation'
 import { SkillCycler } from './components/SkillCycler/SkillCycler'
 import { useDarkMode } from './hooks/useDarkMode'
+import { useTranslation } from './hooks/useTranslation'
 import { stopSpinningFavicon } from './utils/spinningFavicon'
+import contentDe from './locales/content.de.json'
 
 function App() {
   const { isDark, toggleTheme } = useDarkMode()
+  const { t, language } = useTranslation()
   const {
     name,
     title,
@@ -28,6 +31,28 @@ function App() {
     languages
   } = data
 
+  const localizeContent = <T extends { description?: string }>(
+    items: T[],
+    getKey: (item: T) => string,
+    store: Record<string, { description?: string }>
+  ): T[] => {
+    if (language !== 'de') return items
+    return items.map(item => {
+      const override = store[getKey(item)]
+      return override?.description ? { ...item, description: override.description } : item
+    })
+  }
+
+  const localizedWorkExperiences = localizeContent(
+    workExperiences, w => w.company, contentDe.workExperiences
+  )
+  const localizedCertifications = localizeContent(
+    certifications, c => c.certificationName, contentDe.certifications
+  )
+  const localizedLanguages = localizeContent(
+    languages, l => l.name, contentDe.spokenLanguages
+  )
+
   const phoneHref = phone.replace(/\s+/g, '')
 
   const displayedInterests = INTEREST_ORDER
@@ -40,8 +65,8 @@ function App() {
   const cvDropdownRef = useRef<HTMLDivElement>(null)
 
   const cvVersions = [
-    { label: 'Latest', filename: 'Efstathios_Daras_Resume_Latest.pdf', href: resumePdfLatest },
-    { label: '2024', filename: 'Efstathios_Daras_Resume_2024.pdf', href: resumePdf2024 },
+    { label: t('hero.latest'), filename: 'Efstathios_Daras_Resume_Latest.pdf', href: resumePdfLatest },
+    { label: t('hero.year2024'), filename: 'Efstathios_Daras_Resume_2024.pdf', href: resumePdf2024 },
   ]
 
   useEffect(() => {
@@ -242,7 +267,7 @@ function App() {
                   className="flex h-7 w-7 items-center justify-center rounded-full border border-transparent transition hover:border-slate-200 hover:bg-slate-200 dark:hover:border-slate-600 dark:hover:bg-slate-600"
                   href={`mailto:${email}`}
                   aria-label={`Email ${name}`}
-                  title="Open email client"
+                  title={t('hero.openEmail')}
                 >
                   <span className="text-lg">✉️</span>
                 </a>
@@ -252,7 +277,7 @@ function App() {
                   tabIndex={0}
                   onClick={copyEmail}
                   onKeyDown={handleEmailKeyDown}
-                  title="Copy email address"
+                  title={t('hero.copyEmail')}
                 >
                   {email}
                 </span>
@@ -262,7 +287,7 @@ function App() {
                     aria-live="polite"
                     className="pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 rounded-full bg-slate-900 px-3 py-1 text-xs font-medium text-white shadow-md dark:bg-slate-700"
                   >
-                    Copied!
+                    {t('hero.copied')}
                   </span>
                 ) : null}
               </div>
@@ -271,7 +296,7 @@ function App() {
                   className="flex h-7 w-7 items-center justify-center rounded-full border border-transparent transition hover:border-slate-200 hover:bg-slate-200 dark:hover:border-slate-600 dark:hover:bg-slate-600"
                   href={`tel:${phoneHref}`}
                   aria-label={`Call ${phone}`}
-                  title="Call phone number"
+                  title={t('hero.callPhone')}
                 >
                   <span className="text-lg">📱</span>
                 </a>
@@ -281,7 +306,7 @@ function App() {
                   tabIndex={0}
                   onClick={copyPhone}
                   onKeyDown={handlePhoneKeyDown}
-                  title="Copy phone number"
+                  title={t('hero.copyPhone')}
                 >
                   {phone}
                 </span>
@@ -291,7 +316,7 @@ function App() {
                     aria-live="polite"
                     className="pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 rounded-full bg-slate-900 px-3 py-1 text-xs font-medium text-white shadow-md dark:bg-slate-700"
                   >
-                    Copied!
+                    {t('hero.copied')}
                   </span>
                 ) : null}
               </div>
@@ -306,7 +331,7 @@ function App() {
                   <span aria-hidden className="text-lg text-emerald-600 transition group-hover:text-emerald-700 dark:text-emerald-400 dark:group-hover:text-emerald-300">
                     ⬇️
                   </span>
-                  <span>Download CV</span>
+                  <span>{t('hero.downloadCv')}</span>
                   <svg
                     aria-hidden
                     xmlns="http://www.w3.org/2000/svg"
@@ -320,7 +345,7 @@ function App() {
                 {cvDropdownOpen && (
                   <ul
                     role="listbox"
-                    aria-label="CV versions"
+                    aria-label={t('hero.cvVersions')}
                     className="absolute left-0 z-10 mt-2 w-full min-w-max overflow-hidden rounded-xl border border-slate-200 bg-white py-1 shadow-lg dark:border-slate-700 dark:bg-slate-800 sm:left-auto sm:right-0"
                   >
                     {cvVersions.map(({ label, filename, href }) => (
@@ -357,7 +382,7 @@ function App() {
 
         <section id="skills" className="border-t border-slate-200 pt-8 dark:border-slate-700">
           <div className="mb-8 flex flex-col items-center text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">Skills</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">{t('sections.skills')}</p>
           </div>
           <SkillBadgeCloud skills={skills} />
         </section>
@@ -365,33 +390,33 @@ function App() {
         <section id="journey" className="border-t border-slate-200 pt-8 dark:border-slate-700">
           <div className="mx-auto flex max-w-5xl flex-col gap-12">
             <div className="flex flex-col items-center gap-4 text-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">Work &amp; Education</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">{t('sections.journey')}</p>
             </div>
-            <GameTimeline experiences={workExperiences} education={education} />
+            <GameTimeline experiences={localizedWorkExperiences} education={education} />
           </div>
         </section>
 
         <section id="certifications" className="border-t border-slate-200 pt-8 dark:border-slate-700">
           <div className="flex flex-col items-center gap-6 text-center">
             <div className="space-y-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">Certifications</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">{t('sections.certifications')}</p>
               <p className="mx-auto max-w-2xl text-base text-slate-600 dark:text-slate-300">
-                I have always emphasized on continuous learning and staying updated with the latest technologies and best practices.
+                {t('sections.certDesc')}
               </p>
             </div>
-            <CertificationsCarousel certifications={certifications} />
+            <CertificationsCarousel certifications={localizedCertifications} />
           </div>
         </section>
 
         <section id="languages" className="border-t border-slate-200 pt-8 dark:border-slate-700">
           <div className="flex flex-col items-center gap-4 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">Languages</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">{t('sections.languages')}</p>
             <p className="max-w-2xl text-sm text-slate-600 dark:text-slate-300">
-              Once I read that learning a new language is beneficial for the brain. Striving with german ever since!
+              {t('sections.langDesc')}
             </p>
           </div>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {languages.map((lang) => (
+            {localizedLanguages.map((lang) => (
               <article
                 key={lang.name}
                 className="flex h-full flex-col gap-4 rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm transition hover:shadow-md dark:border-slate-700 dark:bg-slate-800/80 dark:hover:shadow-lg"
@@ -415,14 +440,14 @@ function App() {
         <section id="interests" className="border-t border-slate-200 pt-8 dark:border-slate-700">
           <div className="flex flex-col items-center gap-6 text-center">
             <div className="space-y-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">Beyond the keyboard</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">{t('sections.interests')}</p>
             </div>
             <InterestsGrid interests={displayedInterests} />
           </div>
         </section>
 
         <footer className="mb-6 text-center text-xs text-slate-500 dark:text-slate-400">
-          Developed using Cursor and Claude Code, models used: Codex, Sonnet and Opus.
+          {t('footer.text')}
         </footer>
       </main>
     </div>

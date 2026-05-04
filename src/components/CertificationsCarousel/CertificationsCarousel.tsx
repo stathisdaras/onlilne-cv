@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { useTranslation } from '../../hooks/useTranslation'
 
 type Certification = {
   certificationName: string
@@ -17,6 +18,7 @@ const DEFAULT_ROTATION = 5000
 const VISIBLE_COUNT = 6
 
 export function CertificationsCarousel({ certifications, rotationMs = DEFAULT_ROTATION }: CertificationsCarouselProps) {
+  const { t } = useTranslation()
   const [startIndex, setStartIndex] = useState(0)
 
   useEffect(() => {
@@ -82,7 +84,7 @@ export function CertificationsCarousel({ certifications, rotationMs = DEFAULT_RO
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-slate-700 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-slate-100"
                 >
-                  View credential
+                  {t('certifications.viewCredential')}
                   <span aria-hidden>↗</span>
                 </a>
               </div>
@@ -107,5 +109,3 @@ export function CertificationsCarousel({ certifications, rotationMs = DEFAULT_RO
     </div>
   )
 }
-
-

@@ -1,0 +1,60 @@
+{
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "experience": "Experience",
+    "certifications": "Certifications",
+    "languages": "Languages",
+    "interests": "Interests",
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "downloadCv": "Download CV",
+    "openEmail": "Open email client",
+    "copyEmail": "Copy email address",
+    "callPhone": "Call phone number",
+    "copyPhone": "Copy phone number",
+    "copied": "Copied!",
+    "cvVersions": "CV versions",
+    "latest": "Latest",
+    "year2024": "2024"
+  },
+  "sections": {
+    "skills": "Skills",
+    "journey": "Work & Education",
+    "certifications": "Certifications",
+    "certDesc": "I have always emphasized on continuous learning and staying updated with the latest technologies and best practices.",
+    "languages": "Languages",
+    "langDesc": "Once I read that learning a new language is beneficial for the brain. Striving with german ever since!",
+    "interests": "Beyond the keyboard"
+  },
+  "timeline": {
+    "present": "Present",
+    "thesis": "Thesis",
+    "supervisor": "Supervisor",
+    "eduDescription": "Focus on software development and computer science."
+  },
+  "certifications": {
+    "viewCredential": "View credential"
+  },
+  "interests": {
+    "strengthTraining": "Strength Training and Fitness",
+    "nonFiction": "Non-Fiction Literature",
+    "boardGames": "Board Games and Chess",
+    "coffee": "Coffee Brewing"
+  },
+  "footer": {
+    "text": "Developed using Cursor and Claude Code, models used: Codex, Sonnet and Opus."
+  },
+  "cycler": {
+    "phrases": [
+      { "prefix": "I enjoy ", "skills": ["Vibe Coding", "Troubleshooting", "Problem Solving", "Mentoring"] },
+      { "prefix": "I like writing in ", "skills": ["Java", "Kotlin", "TypeScript", "Python", "SQL"] },
+      { "prefix": "I like building ", "skills": ["Distributed Systems", "Scalable Backends", "Microservices", "REST APIs", "AI-powered tools"] },
+      { "prefix": "I am passionate about ", "skills": ["Clean Code", "Customer Satisfaction", "Product Engineering", "User Experience", "Beautiful Design"] }
+    ]
+  }
+}

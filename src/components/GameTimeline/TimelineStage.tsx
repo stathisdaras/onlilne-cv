@@ -49,20 +49,12 @@ export function TimelineStage({ stage, stageIndex, total }: TimelineStageProps) 
 
           {stage.contributions.length > 0 && (
             <div className="timeline-stage__list space-y-2 text-sm text-slate-600 dark:text-slate-300">
-              {stage.contributions.map((item) => {
-                const trimmed = item.trim()
-                const lower = trimmed.toLowerCase()
-                let icon = '📝'
-                if (lower.startsWith('thesis')) icon = '📢'
-                else if (lower.startsWith('supervisor')) icon = '👨‍🏫'
-
-                return (
-                  <div key={item} className="flex items-start gap-3 px-1">
-                    <span aria-hidden className="mt-0.5 text-base">{icon}</span>
-                    <p className="leading-6">{trimmed}</p>
-                  </div>
-                )
-              })}
+              {stage.contributions.map(({ text, icon }) => (
+                <div key={text} className="flex items-start gap-3 px-1">
+                  <span aria-hidden className="mt-0.5 text-base">{icon}</span>
+                  <p className="leading-6">{text}</p>
+                </div>
+              ))}
             </div>
           )}
 

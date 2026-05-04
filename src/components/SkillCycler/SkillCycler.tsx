@@ -1,25 +1,32 @@
 import { useState, useEffect } from 'react'
-
-const PHRASES = [
-  { prefix: 'I enjoy ', skills: ['Vibe Coding', 'Troubleshooting', 'Problem Solving', 'Mentoring'] },
-  { prefix: 'I like writing in ', skills: ['Java', 'Kotlin', 'TypeScript', 'Python', 'SQL'] },
-  { prefix: 'I like building ', skills: ['Distributed Systems', 'Scalable Backends', 'Microservices', 'REST APIs', 'AI-powered tools'] },
-  { prefix: 'I am passionate about ', skills: ['Clean Code', 'Customer Satisfaction', 'Product Engineering', 'User Experience', 'Beautiful Design'] },
-]
+import en from '../../locales/en.json'
+import de from '../../locales/de.json'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 const HOLD_MS = 900
 const SKILL_FADE_MS = 250
 const PREFIX_FADE_MS = 300
 
 export function SkillCycler() {
+  const { language } = useLanguage()
+  const phrases = language === 'de' ? de.cycler.phrases : en.cycler.phrases
+
   const [phraseIdx, setPhraseIdx] = useState(0)
   const [skillIdx, setSkillIdx] = useState(0)
   const [skillVisible, setSkillVisible] = useState(true)
   const [prefixVisible, setPrefixVisible] = useState(true)
 
+  // Reset indices when language changes
+  useEffect(() => {
+    setPhraseIdx(0)
+    setSkillIdx(0)
+    setSkillVisible(true)
+    setPrefixVisible(true)
+  }, [language])
+
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = []
-    const isLastSkill = skillIdx === PHRASES[phraseIdx].skills.length - 1
+    const isLastSkill = skillIdx === phrases[phraseIdx].skills.length - 1
 
     const t1 = setTimeout(() => {
       setSkillVisible(false)
@@ -32,7 +39,7 @@ export function SkillCycler() {
           setPrefixVisible(false)
 
           const t3 = setTimeout(() => {
-            setPhraseIdx(i => (i + 1) % PHRASES.length)
+            setPhraseIdx(i => (i + 1) % phrases.length)
             setSkillIdx(0)
             setPrefixVisible(true)
             setSkillVisible(true)
@@ -45,9 +52,9 @@ export function SkillCycler() {
     timers.push(t1)
 
     return () => timers.forEach(clearTimeout)
-  }, [phraseIdx, skillIdx])
+  }, [phraseIdx, skillIdx, phrases])
 
-  const phrase = PHRASES[phraseIdx]
+  const phrase = phrases[phraseIdx]
   const skill = phrase.skills[skillIdx]
 
   return (

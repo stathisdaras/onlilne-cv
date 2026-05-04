@@ -1,5 +1,7 @@
 import { useMemo } from 'react'
 import { TimelineStage } from './TimelineStage'
+import { useLanguage } from '../../contexts/LanguageContext'
+import { useTranslation } from '../../hooks/useTranslation'
 import './GameTimeline.css'
 
 type WorkExperience = {
@@ -32,6 +34,8 @@ type GameTimelineProps = {
   education: EducationItem[]
 }
 
+export type Contribution = { text: string; icon: string }
+
 export type Stage = {
   id: string
   type: 'education' | 'experience'
@@ -39,7 +43,7 @@ export type Stage = {
   organization: string
   timeframe: string
   description: string
-  contributions: string[]
+  contributions: Contribution[]
   stack: string[]
   icon: string
   iconBackground?: string
@@ -52,6 +56,9 @@ const ICONS: Record<Stage['type'], string> = {
 }
 
 export function GameTimeline({ experiences, education }: GameTimelineProps) {
+  const { language } = useLanguage()
+  const { t } = useTranslation()
+
   const stages = useMemo<Stage[]>(() => {
     const parseDate = (label: string) => {
       const direct = Date.parse(label)
@@ -60,18 +67,20 @@ export function GameTimeline({ experiences, education }: GameTimelineProps) {
       return Number.isNaN(withDay) ? 0 : withDay
     }
 
+    const translateEndDate = (endDate: string) => endDate === 'Present' ? t('timeline.present') : endDate
+
     const eduStages = education.map<Stage>((entry) => {
-      const extras: string[] = []
-      if (entry.thesis) extras.push(`Thesis: ${entry.thesis}`)
-      if (entry.supervisor) extras.push(`Supervisor: ${entry.supervisor}`)
+      const extras: Contribution[] = []
+      if (entry.thesis) extras.push({ icon: '📢', text: `${t('timeline.thesis')}: ${entry.thesis}` })
+      if (entry.supervisor) extras.push({ icon: '👨‍🏫', text: `${t('timeline.supervisor')}: ${entry.supervisor}` })
 
       return {
         id: `education-${entry.degree}`,
         type: 'education',
         title: entry.degree,
         organization: entry.institution,
-        timeframe: `${entry.startDate} — ${entry.endDate}`,
-        description: 'Focus on software development and computer science.',
+        timeframe: `${entry.startDate} — ${translateEndDate(entry.endDate)}`,
+        description: t('timeline.eduDescription'),
         contributions: extras,
         stack: [],
         icon: entry.icon ?? ICONS.education,
@@ -92,9 +101,9 @@ export function GameTimeline({ experiences, education }: GameTimelineProps) {
         type: 'experience',
         title: experience.position,
         organization: experience.company,
-        timeframe: `${experience.startDate} — ${experience.endDate}`,
+        timeframe: `${experience.startDate} — ${translateEndDate(experience.endDate)}`,
         description: experience.description,
-        contributions: experience.mainContributions,
+        contributions: experience.mainContributions.map(text => ({ text, icon: '📝' })),
         stack: experience.techStack,
         icon: experience.icon ?? ICONS.experience,
         iconBackground: experience.iconBackground,
@@ -102,7 +111,8 @@ export function GameTimeline({ experiences, education }: GameTimelineProps) {
       }))
 
     return [...workStages, ...eduStages]
-  }, [education, experiences])
+  }, [education, experiences, language]) // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <div className="timeline-board">
       <div className="timeline-axis" aria-hidden />
@@ -119,5 +129,3 @@ export function GameTimeline({ experiences, education }: GameTimelineProps) {
     </div>
   )
 }
-
-
