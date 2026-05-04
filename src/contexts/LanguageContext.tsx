@@ -12,7 +12,11 @@ const LanguageContext = createContext<LanguageContextType | null>(null)
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>(() => {
     const stored = localStorage.getItem('lang')
-    return stored === 'de' ? 'de' : 'en'
+    if (stored === 'de' || stored === 'en') return stored
+
+    const preferred = navigator.languages ?? [navigator.language]
+    const isGerman = preferred.some(l => l.toLowerCase().startsWith('de'))
+    return isGerman ? 'de' : 'en'
   })
 
   const setLanguage = (lang: Language) => {
