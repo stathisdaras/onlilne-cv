@@ -128,9 +128,9 @@ export function Navigation({ isDark, onToggleTheme }: NavigationProps) {
           ))}
         </div>
 
-        {/* Language + Dark Mode grouped */}
+        {/* Language (desktop only) + Dark Mode */}
         <div className="flex items-center gap-1">
-          <div ref={langDropdownRef} className="relative">
+          <div ref={langDropdownRef} className="relative hidden md:block">
             <button
               onClick={() => setLangDropdownOpen(o => !o)}
               className="navigation__theme-toggle text-xs font-semibold"
@@ -143,7 +143,7 @@ export function Navigation({ isDark, onToggleTheme }: NavigationProps) {
               <ul
                 role="listbox"
                 style={{ backgroundColor: isDark ? 'rgba(15,23,42,0.95)' : 'rgba(247,246,242,0.95)' }}
-                className="absolute left-1/2 z-10 -translate-x-1/2 overflow-hidden rounded-b-md shadow-md"
+                className="absolute left-0 z-10 overflow-hidden rounded-b-md shadow-md"
               >
                 {LANGUAGES.filter(l => l.code !== language).map(({ code, label }) => (
                   <li key={code} role="option" aria-selected={false}>
@@ -165,15 +165,15 @@ export function Navigation({ isDark, onToggleTheme }: NavigationProps) {
             aria-label={isDark ? t('nav.switchToLight') : t('nav.switchToDark')}
             title={isDark ? t('nav.switchToLight') : t('nav.switchToDark')}
           >
-          {isDark ? (
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-            </svg>
-          ) : (
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-            </svg>
-          )}
+            {isDark ? (
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            ) : (
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            )}
           </button>
         </div>
 
@@ -206,6 +206,17 @@ export function Navigation({ isDark, onToggleTheme }: NavigationProps) {
               {label}
             </button>
           ))}
+          <div className="navigation__mobile-lang">
+            {LANGUAGES.map(({ code, label }) => (
+              <button
+                key={code}
+                onClick={() => { setLanguage(code); setIsMenuOpen(false) }}
+                className={`navigation__mobile-link ${language === code ? 'navigation__mobile-link--active' : ''}`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
       )}
     </nav>

@@ -326,3 +326,25 @@
   background-color: #1e293b;
   border-color: #334155;
 }
+
+.navigation__mobile-lang {
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+.dark .navigation__mobile-lang {
+  border-top-color: rgba(51, 65, 85, 0.6);
+}
+
+.navigation__mobile-lang .navigation__mobile-link {
+  width: auto;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 1.25rem;
+}
