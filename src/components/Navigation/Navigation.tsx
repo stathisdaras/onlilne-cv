@@ -143,13 +143,13 @@ export function Navigation({ isDark, onToggleTheme }: NavigationProps) {
               <ul
                 role="listbox"
                 style={{ backgroundColor: isDark ? 'rgba(15,23,42,0.95)' : 'rgba(247,246,242,0.95)' }}
-                className="absolute left-0 z-10 overflow-hidden rounded-b-md shadow-md"
+                className="absolute right-0 z-10 overflow-hidden rounded-b-md shadow-md"
               >
                 {LANGUAGES.filter(l => l.code !== language).map(({ code, label }) => (
                   <li key={code} role="option" aria-selected={false}>
                     <button
                       onClick={() => { setLanguage(code); setLangDropdownOpen(false) }}
-                      className="navigation__theme-toggle w-full text-xs font-semibold"
+                      className="navigation__theme-toggle text-xs font-semibold"
                     >
                       {label}
                     </button>
